@@ -6,6 +6,6 @@ metadata:
 spec:
   containers:
   - name: nginx
-    image: nginx:1.27.0
+    image: asia-northeast3-docker.pkg.dev/rare-shadow-457105-s7/sample-app/sample-app:latest
     ports:
     - containerPort: 80    
