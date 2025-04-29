@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: second-week-configmap
+  namespace: second-week
+data:
+  TITLE: SPARTA

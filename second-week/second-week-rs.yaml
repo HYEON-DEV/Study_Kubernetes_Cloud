@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: second-week-rs
+  namespace: second-week
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: second-week-app
+  template:
+    metadata:
+      labels:
+        app: second-week-app
+    spec:
+      containers:
+        - name: second-week
+          image: asia-northeast3-docker.pkg.dev/rare-shadow-457105-s7/second-week-exercise/second-week-ex:1.0.0
+          env: 
+          - name: TITLE
+            valueFrom:
+              configMapKeyRef:
+                name: second-week-configmap
+                key: TITLE
+          - name: PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: second-week-secret
+                key: PASSWORD
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 100m
+              memory: 256Mi
+          ports:
+            - containerPort: 3000
