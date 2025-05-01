@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: third-week-dp
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: third-week-app
+  template:
+    metadata:
+      labels:
+        app: third-week-app
+    spec:
+      containers:
+      - name: third-week-app
+        image: asia-northeast3-docker.pkg.dev/rare-shadow-457105-s7/third-week/third-week-ex:1.0.0
+        ports:
+          - containerPort: 3000
